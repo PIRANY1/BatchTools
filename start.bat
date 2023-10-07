@@ -92,7 +92,7 @@ SETLOCAL DisableDelayedExpansion
     @ping -n 1 localhost> nul    
     echo.
     @ping -n 1 localhost> nul
-    echo [11] Get Website Block
+    echo [11] Microsoft Rewards Daily Farm.
     @ping -n 1 localhost> nul
     echo.
     echo.
@@ -102,13 +102,13 @@ SETLOCAL DisableDelayedExpansion
     If %menu11% == 2 goto hackerscreentype1
     If %menu11% == 3 goto hackerscreentype2
     If %menu11% == 4 goto shutdown%min
-    If %menu11% == 5 goto rickroll
-    If %menu11% == 6 goto pccrasher
+    If %menu11% == 5 goto rickroll 
+    If %menu11% == 6 goto pccrasher rem 1 
     If %menu11% == 7 goto getbluescreened
     If %menu11% == 8 goto getwebblock
     If %menu11% == 9 goto actadmacc
-    If %menu11% == 9 goto spamdomain
-    If %menu11% == 9 goto spamyt
+    If %menu11% == 10 goto spamdomain
+    If %menu11% == 11 goto msrewardsfarm
 
 :windowsoscheck
     prompt $g
@@ -158,7 +158,9 @@ SETLOCAL DisableDelayedExpansion
     goto hackerscreentype1
 
 :shutdown%min
-    shutdown -s -t 800 -f
+    set /p shutdownmin=After how long should the PC shut down(in minutes):
+    set /a shutdownsecs=%shutdownmin%*60
+    shutdown -s -t %shutdownsecs% -f
 
 :getbluescreened
     @echo off &setlocal enableextensions ENABLEDELAYEDEXPANSION 
@@ -200,3 +202,17 @@ SETLOCAL DisableDelayedExpansion
     :start
     start "BatchTools" "%spamdomain%"
     goto start
+
+:hackerscreentype2
+    dir/s && dir/s && dir/s 
+
+:rickroll
+    start "RickRoll" "https://bitly.com/98K8eH"
+    goto index
+
+
+:actadmacc
+
+:msrewardsfarm
+
+:pccrasher
