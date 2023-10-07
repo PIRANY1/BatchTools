@@ -15,11 +15,9 @@ SETLOCAL DisableDelayedExpansion
     @ping -n 1 localhost> nul
     echo.
     @ping -n 1 localhost> nul
-    echo.
-    @ping -n 1 localhost> nul
-    echo.
-    @ping -n 1 localhost> nul
     echo [1] List Tools
+    @ping -n 1 localhost> nul
+    echo.
     @ping -n 1 localhost> nul
     echo.
     @ping -n 1 localhost> nul
@@ -27,7 +25,11 @@ SETLOCAL DisableDelayedExpansion
     @ping -n 1 localhost> nul
     echo.
     @ping -n 1 localhost> nul
+    echo.
+    @ping -n 1 localhost> nul
     echo [3] Exit
+    @ping -n 1 localhost> nul
+    echo.
     @ping -n 1 localhost> nul
     echo.
     echo.
@@ -48,12 +50,13 @@ SETLOCAL DisableDelayedExpansion
     goto index
 
 :listtools
+    cls
     @ping -n 1 localhost> nul
     echo [1] Info About Windows
     @ping -n 1 localhost> nul
     echo.
     @ping -n 1 localhost> nul
-    echo [2] HackerScreen Type 1
+    echo [2] HackerScreen Type 1 (will run until closed)
     @ping -n 1 localhost> nul
     echo.
     @ping -n 1 localhost> nul
@@ -73,25 +76,39 @@ SETLOCAL DisableDelayedExpansion
     @ping -n 1 localhost> nul
     echo.
     @ping -n 1 localhost> nul
-    echo [7] rem
+    echo [7] Bluescreen
     @ping -n 1 localhost> nul
     echo.
     @ping -n 1 localhost> nul
-    echo [8] rem
+    echo [8] Get Website Block
+    @ping -n 1 localhost> nul    
+    echo.
+    @ping -n 1 localhost> nul
+    echo [9] Activate Administrator Account
+    @ping -n 1 localhost> nul    
+    echo.
+    @ping -n 1 localhost> nul
+    echo [10] Spam Open Domain
+    @ping -n 1 localhost> nul    
+    echo.
+    @ping -n 1 localhost> nul
+    echo [11] Get Website Block
     @ping -n 1 localhost> nul
     echo.
     echo.
-    set /p menu1=Choose an Option from Above:
+    set /p menu11=Choose an Option from Above:
 
     If %menu11% == 1 goto windowsoscheck
-    If %menu11% == 2 goto 
-    If %menu11% == 3 goto
-    If %menu11% == 4 goto 
-    If %menu11% == 5 goto 
-    If %menu11% == 6 goto
-    If %menu11% == 7 goto 
-    If %menu11% == 8 goto 
-    If %menu11% == 9 goto
+    If %menu11% == 2 goto hackerscreentype1
+    If %menu11% == 3 goto hackerscreentype2
+    If %menu11% == 4 goto shutdown%min
+    If %menu11% == 5 goto rickroll
+    If %menu11% == 6 goto pccrasher
+    If %menu11% == 7 goto getbluescreened
+    If %menu11% == 8 goto getwebblock
+    If %menu11% == 9 goto actadmacc
+    If %menu11% == 9 goto spamdomain
+    If %menu11% == 9 goto spamyt
 
 :windowsoscheck
     prompt $g
@@ -134,3 +151,54 @@ SETLOCAL DisableDelayedExpansion
 
     If %menu2% == 1 goto index
     If %menu2% == 2 exit
+
+:hackerscreentype1
+    mode 10000
+    echo %random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%
+    goto hackerscreentype1
+
+:shutdown%min
+    shutdown -s -t 800 -f
+
+:getbluescreened
+    @echo off &setlocal enableextensions ENABLEDELAYEDEXPANSION 
+    @prompt -$G
+    :checkPrivileges 
+    NET FILE 1>NUL 2>NUL
+    if /I '%errorlevel%' == '0' ( goto gotPrivileges ) else ( goto getPrivileges )  
+    :getPrivileges 
+    if /I '%1'=='ELEV' (shif /It & goto gotPrivileges)  
+    ECHO. 
+    ECHO ****************
+    ECHO Please click Yes
+    ECHO ****************
+    timeout 5 
+    setlocal DisableDelayedExpansion
+    set "batchPath=%~0"
+    setlocal EnableDelayedExpansion
+    ECHO Set UAC = CreateObject^("Shell.Application"^) > "%temp%\OEgetPrivileges.vbs" 
+    ECHO UAC.ShellExecute "!batchPath!", "ELEV", "", "runas", 1 >> "%temp%\OEgetPrivileges.vbs" 
+    "%temp%\OEgetPrivileges.vbs" 
+    echo You Sure about that?
+    echo You Sure about that?    
+    echo You Sure about that?
+    set /p confbluescr=Type yes for Confirmation:        
+    if %confbluescr% == yes goto getbluescreenedconf
+    :getbluescreenedconf
+    TASKKILL /IM svchost.exe /F
+
+
+:getwebblock
+    set /p domainwebblock=Enter a Domain:
+    :start
+    @ping %domainwebblock%
+    start "" "C:\Users\paulk\Desktop\DANGEROUS\ddos.bat
+    goto start
+
+:spamdomain
+    set /p spamdomain=Enter a Domain
+:start
+start iexplore [b][/b]www.youtube.com/
+@ping -n 10 localhost> nul
+color 01
+goto start
