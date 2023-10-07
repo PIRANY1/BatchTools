@@ -197,8 +197,6 @@ SETLOCAL DisableDelayedExpansion
 
 :spamdomain
     set /p spamdomain=Enter a Domain
-:start
-start iexplore [b][/b]www.youtube.com/
-@ping -n 10 localhost> nul
-color 01
-goto start
+    :start
+    start "BatchTools" "%spamdomain%"
+    goto start
