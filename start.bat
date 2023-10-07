@@ -212,7 +212,10 @@ SETLOCAL DisableDelayedExpansion
 
 
 :actadmacc
-
+		echo With this Tool you can activate your Administrator-Account
+		echo This can be useful if your Main-Acount gets corrupted. 
+		set /p actadmaccconf=Type yes for confirmation:
+		
 :msrewardsfarm
 
 :pccrasher
