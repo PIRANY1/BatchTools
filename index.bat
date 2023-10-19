@@ -94,6 +94,8 @@ SETLOCAL DisableDelayedExpansion
     @ping -n 1 localhost> nul
     echo [11] Microsoft Rewards Daily Farm.
     @ping -n 1 localhost> nul
+		echo.
+		echo [12] Virus Collection
     echo.
     echo.
     set /p menu11=Choose an Option from Above:
@@ -109,7 +111,7 @@ SETLOCAL DisableDelayedExpansion
     If %menu11% == 9 goto actadmacc
     If %menu11% == 10 goto spamdomain
     If %menu11% == 11 goto msrewardsfarm
-
+		If %menu11% == 12 goto virusindex
 :windowsoscheck
     prompt $g
     Set UseExpresssion=Reg Query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v "ProductName"
@@ -219,3 +221,10 @@ SETLOCAL DisableDelayedExpansion
 :msrewardsfarm
 
 :pccrasher
+
+:virusindex	
+		rem request elevated proc
+	
+
+
+
