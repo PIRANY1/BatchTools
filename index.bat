@@ -709,22 +709,10 @@ SETLOCAL DisableDelayedExpansion
 :prrtlive
     curl parrot.live
 :wingetupg
-
     echo This Script will update all of your PC Apps. This may take a while.
     echo Please press Enter to continiue
     pause
-    net file 1>nul 2>nul
-    if "%errorlevel%" == "0" (goto admin)
-	:elevate
-    powershell.exe Start-Process %~s0 -Verb runAs
-    exit /B
-    :admin
     winget upgrade --all
-
-
-
-
-
 :wttr
     echo Choose a Location for that you want to check the Weather:
     set /P wttrlocation=Enter a Location
