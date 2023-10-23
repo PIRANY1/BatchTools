@@ -45,7 +45,7 @@ SETLOCAL DisableDelayedExpansion
     @ping -n 1 localhost> nul
     echo Unless otherwise stated all Scripts are made by myself.
     @ping -n 1 localhost> nul
-    echo Use only under the BSL-1.0 license
+    echo Use only under the MIT license (see GitHub Repo)
     pause 
     goto index
 
