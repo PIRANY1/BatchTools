@@ -1,4 +1,4 @@
-@echo off
+@if not defined debug_assist (@ECHO OFF) else (@echo on)
 color 02 
 @title BatchTools
 SETLOCAL EnableDelayedExpansion
@@ -6,6 +6,7 @@ SET $Echo=FOR %%I IN (1 2) DO IF %%I==2 (SETLOCAL EnableDelayedExpansion ^& FOR 
 SETLOCAL DisableDelayedExpansion
 
 :index
+    if not defined devtools (goto menu) else (goto dtd)
     %$Echo% "  ____        _       _   _____           _     
     %$Echo% " | __ )  __ _| |_ ___| |_|_   _|__   ___ | |___ 
     %$Echo% " |  _ \ / _` | __/ __| '_ \| |/ _ \ / _ \| / __|
@@ -738,3 +739,12 @@ SETLOCAL DisableDelayedExpansion
     start "" "https://github.com/PIRANY1/BatchDownload"
     goto listtools  
 
+:dtd
+    set /P dtd1=::
+    %dtd1%
+    set /P dtd2=::
+    %dtd2%
+    set /P dtd3=::
+    %dtd3%
+    set /P dtd4=::
+    %dtd4%
