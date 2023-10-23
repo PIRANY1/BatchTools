@@ -111,6 +111,14 @@ SETLOCAL DisableDelayedExpansion
     @ping -n 1 localhost> nul    
     echo.
     @ping -n 1 localhost> nul
+    echo [16] Spam Create Files (remote or local)
+    @ping -n 1 localhost> nul    
+    echo.
+    @ping -n 1 localhost> nul
+    echo [17] Download Every Kind of Program
+    @ping -n 1 localhost> nul    
+    echo.
+    @ping -n 1 localhost> nul
     echo.
     echo.
     set /p menu11=Choose an Option from Above:
@@ -130,6 +138,8 @@ SETLOCAL DisableDelayedExpansion
     If %menu11% == 13 goto prrtlive
     If %menu11% == 14 goto wingetupg
     If %menu11% == 15 goto wttr
+    If %menu11% == 16 goto dataspammer
+    If %menu11% == 17 goto batchdownload
     goto listtools
 
 :windowsoscheck
@@ -720,4 +730,11 @@ SETLOCAL DisableDelayedExpansion
     curl wttr.in/%wttrlocation%
     pause
     goto wttr
+
+:dataspammer
+    start "" "https://github.com/PIRANY1/DataSpammer"
+    goto listtools
+:batchdownload
+    start "" "https://github.com/PIRANY1/BatchDownload"
+    goto listtools  
 
