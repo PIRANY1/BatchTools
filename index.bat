@@ -1,12 +1,12 @@
+:top
 @if not defined debug_assist (@ECHO OFF) else (@echo on)
 color 02 
 @title BatchTools
 SETLOCAL EnableDelayedExpansion
 SET $Echo=FOR %%I IN (1 2) DO IF %%I==2 (SETLOCAL EnableDelayedExpansion ^& FOR %%A IN (^^^!Text:""^^^^^=^^^^^"^^^!) DO ENDLOCAL ^& ENDLOCAL ^& ECHO %%~A) ELSE SETLOCAL DisableDelayedExpansion ^& SET Text=
 SETLOCAL DisableDelayedExpansion
-
+if not defined devtools (goto index) else (goto dtd)
 :index
-    if not defined devtools (goto menu) else (goto dtd)
     %$Echo% "  ____        _       _   _____           _     
     %$Echo% " | __ )  __ _| |_ ___| |_|_   _|__   ___ | |___ 
     %$Echo% " |  _ \ / _` | __/ __| '_ \| |/ _ \ / _ \| / __|
@@ -39,7 +39,7 @@ SETLOCAL DisableDelayedExpansion
     If %menu1% == 1 goto listtools
     If %menu1% == 2 goto info
     If %menu1% == 3 exit
-
+    goto index
 :info 
     cls
     echo With this BatchScript you can access a variety of Tools.
@@ -129,7 +129,7 @@ SETLOCAL DisableDelayedExpansion
     If %menu11% == 3 goto hackerscreentype2
     If %menu11% == 4 goto shutdown%min
     If %menu11% == 5 goto rickroll 
-    If %menu11% == 6 goto pccrasher rem 1 
+    If %menu11% == 6 goto pccrasher
     If %menu11% == 7 goto getbluescreened
     If %menu11% == 8 goto getwebblock
     If %menu11% == 9 goto actadmacc
@@ -250,320 +250,154 @@ SETLOCAL DisableDelayedExpansion
 		set /p actadmaccconf=Type yes for confirmation:
 		
 :msrewardsfarm
-    echo this is not done 
+    echo [1] Type 1 (without UI) (doesnt work)
+    @ping -n 1 localhost> nul
+    echo.
+    @ping -n 1 localhost> nul
+    echo [2] Type 2 (with UI) (doesnt work)
+    @ping -n 1 localhost> nul
+    echo.
+    @ping -n 1 localhost> nul
+    echo [3] Credits (opens link to files so take this)
+    @ping -n 1 localhost> nul
+    echo.
+    echo.
+    set /P msrewardfarm=Choose an Option from Above
+    if %msrewardfarm% == 1 goto msrewarnoui
+    if %msrewardfarm% == 2 goto msrewarui   
+    if %msrewardfarm% == 3 echo not my work | start "" "https://github.com/tungdo0602/MSRewardBot/"| start "" "https://github.com/Noah-Jaffe/MsftRewards" | pause | goto msrewardsfarm 
+:msrewarnoui
+    (
+    echo <!DOCTYPE html>
+    echo <html>
+    echo   <head>
+    echo     <script>
+    echo       function sleep(ms) {
+    echo         return new Promise((resolve) => setTimeout(resolve, ms));
+    echo       }
+    echo       async function yourlink() {
+    echo         window.open("https://rewards.bing.com/", "_blank");
+    echo         const MAX_POINTS = 150 + 20;
+    echo         const POINTS_EACH = 5;
+    echo         for (let i = 1; i * POINTS_EACH <= MAX_POINTS; ++i) {
+    echo           window.open(`https://www.bing.com/search?q=${i}`, "_blank");
+    echo           console.log(i);
+    echo           await sleep(650);
+    echo         }
+    echo       }
+    echo     </script>
+    echo   </head>
+    echo   <body>
+    echo     <button onclick="yourlink()" width="100%" height="100%">Click Here to open all searches for microsoft rewards bs</button>
+    echo </body>
+    echo </html>
+    ) > msrewardfarmnoui.html
+    echo File created!
     pause
     goto index
-    @echo off
-    color 02
-    :SMENU
-    cls
-    echo.
-    ping -n 1 localhost>nul
-    echo Auswahlmenu
-    ping -n 1 localhost>nul
-    echo ==========
-    ping -n 1 localhost>nul
-    echo.
-    echo [1] MSRewards 
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo [2] Abbruch
-    ping -n 1 localhost>nul
-    echo.
-    set asw=0
-    set /p asw="Bitte ein Auswahl treffen: "
-
-    if %asw%==1 goto MSREW
-    if %asw%==2 goto END
-
-    :MSREW
-    cls
-    echo.
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo Weiterleitung zum MSRewardServer bestätigen
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo [1] Bestätigen
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo [2] Zurück zum Auswahlbildschirm
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    set asw=0
-    set /p asw="Bitte ein Auswahl treffen: "
-
-    if %asw%==1 goto MSRLOAD
-    if %asw%==2 goto SMENU
-
-    :MSRLOAD
-    cls
-    echo Verbindung zum MicrosoftRewardServer wird hergestellt. Bitte warten sie.
-    echo /
-    echo 10 Prozent abgeschlossen
-    ping -n 2 localhost>nul
-    cls
-    echo Verbindung zum MicrosoftRewardServer wird hergestellt. Bitte warten sie.
-    echo -
-    echo 20 Prozent abgeschlossen
-    ping -n 2 localhost>nul
-    cls
-    echo Verbindung zum MicrosoftRewardServer wird hergestellt. Bitte warten sie.
-    echo \
-    echo 30 Prozent abgeschlossen
-    ping -n 2 localhost>nul
-    cls 
-    echo Verbindung zum MicrosoftRewardServer wird hergestellt. Bitte warten sie.
-    echo /
-    echo 40 Prozent abgeschlossen
-    ping -n 2 localhost>nul
-    cls
-    echo Verbindung zum MicrosoftRewardServer wird hergestellt. Bitte warten sie.
-    echo -
-    echo 50 Prozent abgeschlossen
-    ping -n 2 localhost>nul
-    cls
-    echo Verbindung zum MicrosoftRewardServer wird hergestellt. Bitte warten sie.
-    echo \
-    echo 60 Prozent abgeschlossen
-    ping -n 2 localhost>nul
-    cls
-    echo Verbindung zum MicrosoftRewardServer wird hergestellt. Bitte warten sie.
-    echo /
-    echo 70 Prozent abgeschlossen
-    ping -n 2 localhost>nul
-    cls
-    echo Verbindung zum MicrosoftRewardServer wird hergestellt. Bitte warten sie.
-    echo -
-    echo 80 Prozent abgeschlossen
-    ping -n 2 localhost>nul
-    cls
-    echo Verbindung zum MicrosoftRewardServer wird hergestellt. Bitte warten sie.
-    echo \
-    echo 90 Prozent abgeschlossen
-    ping -n 2 localhost>nul
-    cls
-    echo Verbindung zum MicrosoftRewardServer wird hergestellt. Bitte warten sie.
-    echo /
-    echo 100 Prozent abgeschlossen
-    ping -n 2 localhost>nul
-    cls
-    echo Verifizierung läuft
-    ping -n 5 localhost>nul
-    cls
-    echo Verifizierung abgeschlossen
-    ping -n 5 localhost>nul
-    cls 
-    echo Anmeldung wird gestartet
-    ping -n 3 localhost>nul
-    cls
-    echo Weiterleitung:5
-    ping -n 2 localhost>nul
-    cls
-    echo Weiterleitung:4
-    ping -n 2 localhost>nul
-    cls
-    echo Weiterleitung:3
-    ping -n 2 localhost>nul
-    cls
-    echo Weiterleitung:2
-    ping -n 2 localhost>nul
-    cls
-    echo Weiterleitung:1
-    ping -n 2 localhost>nul
-    cls
-    echo Weiterleiten...
-    ping -n 3 localhost>nul
-    cls
-    :MSREW
-    cls
-
-    :MSRCHS
-    cls
-    ping -n 1 localhost>nul
-    echo Auswahlmenu
-    ping -n 1 localhost>nul
-    echo ==========
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo [1] MicrosoftRewardBOT
-    ping -n 1 localhost>nul
-    echo    [2] Weitere Informationen
-    ping -n 1 localhost>nul
-    echo [3] MicrosoftRewards
-    ping -n 1 localhost>nul
-    echo    [4]Weitere Informationen
-    ping -n 1 localhost>nul
-    echo [5] Verbindung beenden
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    set asw=0
-    set /p asw="Bitte ein Auswahl treffen: "
-
-    if %asw%==1 goto MSRBot
-    if %asw%==2 goto MSRBotINF
-    if %asw%==3 goto MSREXE
-    if %asw%==4 goto MSREXEINF
-    if %asw%==5 goto MSREW
 
 
-    :MSRBot
-    cls
-    echo.
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo Möchten sie den MicrosoftRewardBot(MSREWB) starten?
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo [1] Ja (dieses Fenster schließt sich und sie werden weitergeleitet!)
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo. 
-    ping -n 1 localhost>nul
-    echo [2] Nein zurück zum vorherigen Fenster
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    set asw=0
-    set /p asw="Bitte ein Auswahl treffen: "
-
-    if %asw%==2 goto MSRCHS
-    if %asw%==1 goto EXEMSREWB
-
-    :EXEMSREWB 
-    start remm  
-
-    :MSRBotINF
-    cls
-    echo MSRewardBot
-    echo A bot that do auto search and gain points
-    echo Use iframe method (use less memory than window method)
-    echo ZurÜck zum vorherigen bildschirm in:5
-    ping -n 2 localhost>nul
-    cls
-    echo MSRewardBot
-    echo A bot that do auto search and gain points
-    echo Use iframe method (use less memory than window method)
-    echo ZurÜck zum vorherigen bildschirm in:4
-    ping -n 2 localhost>nul
-    cls
-    echo MSRewardBot
-    echo A bot that do auto search and gain points
-    echo Use iframe method (use less memory than window method)
-    echo ZurÜck zum vorherigen bildschirm in:3
-    ping -n 2 localhost>nul
-    cls
-    echo MSRewardBot
-    echo A bot that do auto search and gain points
-    echo Use iframe method (use less memory than window method)
-    echo ZurÜck zum vorherigen bildschirm in:2
-    ping -n 2 localhost>nul
-    cls
-    echo MSRewardBot
-    echo A bot that do auto search and gain points
-    echo Use iframe method (use less memory than window method)
-    echo ZurÜck zum vorherigen bildschirm in:1
-    ping -n 2 localhost>nul
-    cls
-    echo MSRewardBot
-    echo A bot that do auto search and gain points
-    echo Use iframe method (use less memory than window method)
-    ping -n 2 localhost>nul
-    goto MSRCHSINF
-
-    :MSREXE
-    cls
-    echo.
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo Möchten sie den MicrosoftReward(MSREW) starten?
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo [1] Ja (dieses Fenster schließt sich und sie werden weitergeleitet!)
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    echo. 
-    ping -n 1 localhost>nul
-    echo [2] Nein zurück zum vorherigen Fenster
-    ping -n 1 localhost>nul
-    echo.
-    ping -n 1 localhost>nul
-    set asw=0
-    set /p asw="Bitte ein Auswahl treffen: "
-
-    if %asw%==2 goto MSRCHS
-    if %asw%==1 goto EXEMSREXE
-
-    :EXEMSREXE
-    start rem 222
-
-    :MSREXEINF
-    cls
-    echo MsftRewards
-    echo Msft Rewards automation
-    echo.
-    echo v1.0
-    echo This version seems to work on Edge (110.0.1587.69) for windows 11
-    echo.
-    echo How to use v1.0
-    echo This automates the searching for your desktop browser.
-    echo You can do this via the [HTML Page Option](/HTML_Page_Option) or the [Dev Console option](/Dev_Console_option)
-    echo.
-    echo To run the dev console option:
-    echo See the [file in the folder](/Dev_Console_option/README.md) for full detailed instructions.
-    echo. 
-    echo.
-    echo To run the HTML page:
-    echo See [file in the folder](/HTML_Page_Option/README.md) for full detailed instructions.
-    echo.
-    echo.
-    echo.
-    echo [1] Zurück
-    echo. 
-    echo. 
-    echo [2] Um die oben erwähnte Datei zu öffnen drücken sie die 1
-    set asw=0
-    set /p asw="Bitte ein Auswahl treffen: "
-
-    if %asw%==2 goto MSRCHS
-    if %asw%==1 goto FOLDERMSREXE
-
-    :FOLDERMSREXE
-    start remm
-
-    :END
-    exit
+:msrewarui
+    (
+    echo <html>
+    echo 	<head>
+    echo 		<title>Microsoft Rewards Bot</title>
+    echo 	</head>
+    echo 	<body>
+    echo 		<p>Status: <strong id="status">Currently running...</strong></p>
+    echo 		<p>Auto reload page: <strong id="reloadstatus"></strong></p><button id="reload">Toggle</button>
+    echo 		<p>Current search per load: <strong id="searches"></strong></p><button id="change">Change</button> <button id="reset">Reset</button>
+    echo 		<button id="dm"><span id="dms"></span> Debug Mode</button>
+    echo 		<script>
+    echo 			window.onload = function(){
+    echo 				function checkBoolean(v){
+    echo 					return ""+v.toLowerCase()==='true';
+    echo 				}
+    echo 				if(!localStorage.getItem("searches"))localStorage.setItem("searches", 1);
+    echo 				if(!localStorage.getItem("autoreload"))localStorage.setItem("autoreload", false);
+    echo 				if(!localStorage.getItem("debug"))localStorage.setItem("debug", false);
+    echo 				window.setInterval(function(){
+    echo 					document.querySelector("#searches").innerText = "" + localStorage.getItem("searches");
+    echo 					document.querySelector("#reloadstatus").innerText = "" + localStorage.getItem("autoreload");
+    echo 					if(checkBoolean(localStorage.getItem("debug"))){
+    echo 						document.querySelector("#dms").innerText = "Disable";
+    echo 					}else{
+    echo 						document.querySelector("#dms").innerText = "Enable";
+    echo 					}
+    echo 				});
+    echo 				document.querySelector("#reload").onclick = function(){
+    echo 					localStorage.setItem("autoreload", !checkBoolean(localStorage.getItem("autoreload")));
+    echo 				}
+    echo 				document.querySelector("#dm").onclick = function(){
+    echo 					localStorage.setItem("debug", !checkBoolean(localStorage.getItem("debug")));
+    echo 					let dbg = new URL(location.href);
+    echo 					dbg.searchParams.set("debug", localStorage.getItem("debug"));
+    echo 					location.href = dbg;
+    echo 				}
+    echo 				document.querySelector("#change").onclick = function(){
+    echo 					let w = prompt();
+    echo 					if(w<=0||w>100){
+    echo 						alert("Number must between 1 and 100.")
+    echo 					}else{
+    echo 						localStorage.setItem("searches", Number(w));
+    echo 					}
+    echo 				}
+    echo 				document.querySelector("#reset").onclick = function(){
+    echo 					localStorage.setItem("searches", 1);
+    echo 				}
+    echo 				let frameReady = 0;
+    echo 				function chargen(length) {
+    echo 					var result           = '';
+    echo 					var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    echo 					var charactersLength = characters.length;
+    echo 					for ( var i = 0; i < length; i++ ) {
+    echo 						result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    echo 					}
+    echo 					return result;
+    echo 				}
+    echo 				function createIframe(search){
+    echo 					let chars = chargen(10);
+    echo 					let a = document.createElement("iframe");
+    echo 					let bingurl = new URL("https://www.bing.com/news/search?q=" + Math.random() + chars);
+    echo 					bingurl.searchParams.set("setmkt", "en-us");
+    echo 					bingurl.searchParams.set("setlang", "en");
+    echo 					a.src = bingurl.href;
+    echo 					a.id = chars;
+    echo 					document.body.appendChild(a);
+    echo 					if(!(((new URL(location.href).searchParams.get("debug")+"")).toLowerCase()==='true')){
+    echo 						a.style.display = "none";
+    echo 						a.onload = function(){
+    echo 							window.setTimeout(function(){
+    echo 								a.remove();
+    echo 							}, 1000);
+    echo 						}
+    echo 						frameReady += 1;
+    echo 					}
+    echo 				}
+    echo 				for(let i=0;i<Number(localStorage.getItem("searches"));i++){
+    echo 					createIframe();
+    echo 				}
+    echo 				let isDone = window.setInterval(function(){
+    echo 					if(frameReady>=(Number(localStorage.getItem("searches"))-1)){
+    echo 						window.clearInterval(isDone);
+    echo 						if(checkBoolean(localStorage.getItem("autoreload"))){
+    echo 							document.querySelector("#status").innerText = "Done! Reloading in 1 seconds...";
+    echo 							window.setTimeout(function(){
+    echo 								location.reload();
+    echo 							}, 1000);
+    echo 						}else{
+    echo 							document.querySelector("#status").innerText = "Done!";
+    echo 						}
+    echo 					}
+    echo 				});
+    echo 			}
+    echo 		</script>
+    echo 	</body>
+    echo </html>
+    ) > msrewardfarmwui.html
+    echo File created!
+    pause
+    goto index
 :pccrasher
     net file 1>nul 2>nul
     if "%errorlevel%" == "0" (goto admin)
